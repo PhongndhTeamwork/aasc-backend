@@ -21,6 +21,9 @@
       "@authentication/*": [
         "src/authentication/*"
       ],
+      "@health/*": [
+        "src/health/*"
+      ],
       "@provider/*": [
         "src/providers/*"
       ],

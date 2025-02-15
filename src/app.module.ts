@@ -7,6 +7,7 @@ import { HttpExceptionFilter } from "./common/exceptions/http-exception.filter";
 import { ValidationPipe } from "@pipe/validation.pipe";
 import { TransformInterceptor } from "@interceptor/transform.interceptor";
 import { AuthenticationModule } from "@authentication/authentication.module";
+import { HealthModule } from "@health/health.module";
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AuthenticationModule } from "@authentication/authentication.module";
     ProviderModule,
     ModelModule,
     AuthenticationModule,
+    HealthModule
   ],
   controllers: [],
   providers: [
