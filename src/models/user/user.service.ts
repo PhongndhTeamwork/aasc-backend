@@ -66,25 +66,5 @@ export class UserService {
     });
   }
 
-  async userLogin(data: Prisma.UserCreateInput): Promise<User> {
-    let user: User;
-    try {
-      user = await this.prisma.user.findUnique({ where: { account: data.account } });
-    } catch (error) {
-      throw new InternalServerErrorException(error);
-    }
-    if (user) return user;
-    return await this.createUser(data);
-  }
-
-  async checkUserExistent(account: string): Promise<boolean> {
-    try {
-      const user: Prisma.UserCreateInput = await this.prisma.user.findUnique({ where: { account } });
-      return !!user;
-    } catch (error) {
-      throw new InternalServerErrorException(error);
-    }
-  }
-
 
 }
