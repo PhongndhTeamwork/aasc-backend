@@ -33,7 +33,7 @@
     "@nestjs/swagger": "^7.4.0",
     "@nestjs/typeorm": "^10.0.2",
     "@nestjs/websockets": "^10.3.10",
-    "@prisma/client": "^5.17.0",
+    "@prisma/client": "^6.3.1",
     "@types/passport-facebook": "^3.0.3",
     "axios": "^1.7.3",
     "class-transformer": "^0.5.1",

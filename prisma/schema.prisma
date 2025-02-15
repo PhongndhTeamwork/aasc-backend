@@ -20,6 +20,8 @@ model User {
   emal         String?
   accessToken  String? @map("access_token")
   refreshToken String? @map("refresh_token")
+
+  @@map("users")
 }
 
 // npx prisma migrate dev --name init
