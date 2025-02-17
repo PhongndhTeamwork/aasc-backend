@@ -18,7 +18,7 @@ async function bootstrap() {
   SwaggerModule.setup("api/docs", app, document);
 
   app.enableCors({
-    origin: ["https://aasc-frontend-ivory.vercel.app/", "http://localhost:7000","https://dinhphong.bitrix24.vn/"],
+    origin: ["https://aasc-frontend-ivory.vercel.app", "http://localhost:7000","https://dinhphong.bitrix24.vn"],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
