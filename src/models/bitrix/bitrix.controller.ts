@@ -23,15 +23,8 @@ export class BitrixController {
     if (result instanceof HttpException) {
       throw result;
     }
-    res.cookie("bitrix_access_token", result, {
-      httpOnly: true, // Prevents JavaScript access (secure against XSS)
-      secure: true,   // Required for HTTPS (set `false` for local dev)
-      sameSite: "none", // Required for cross-origin cookies
-      domain: "https://aasc-frontend-ivory.vercel.app", // Allow frontend to access it
-      path: "/", // Cookie is accessible for all routes
-      maxAge: 3600 * 1000, // Expire in 1 hour
-    });
-    res.redirect("https://aasc-frontend-ivory.vercel.app/contact");
+
+    res.redirect("https://aasc-frontend-ivory.vercel.app/method?accessToken="+result);
   }
 
   @Post("refresh-token")
@@ -45,6 +38,7 @@ export class BitrixController {
 
   @Get("methods")
   async getAvailableMethods(@Query("accessToken") accessToken: string) {
+    console.log(accessToken);
     const result = await this.bitrixService.getAvailableMethods(accessToken);
     if (result instanceof HttpException) {
       throw result;
