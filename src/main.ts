@@ -1,8 +1,6 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
-import * as session from "express-session";
-import * as passport from "passport";
 
 
 async function bootstrap() {

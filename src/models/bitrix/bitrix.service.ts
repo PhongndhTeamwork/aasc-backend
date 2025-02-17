@@ -45,7 +45,7 @@ export class BitrixService {
           }
         });
       }
-      return body.AUTH_ID
+      return body.AUTH_ID;
     } catch (e) {
       return new BadRequestException(e?.message);
     }
@@ -61,7 +61,7 @@ export class BitrixService {
           full: true
         }
       });
-      return response.data.result;
+      return { methods: response.data.result };
     } catch (error) {
       if (error?.response?.status !== HttpStatus.UNAUTHORIZED) return new HttpException(error?.response?.data?.error || "Something went wrong", error?.response?.status || 500);
       try {
@@ -73,7 +73,7 @@ export class BitrixService {
             full: true
           }
         });
-        return response.data.result;
+        return { methods: response.data.result, accessToken: newAccessToken };
       } catch (e) {
         return new BadRequestException(e?.message);
       }
@@ -89,7 +89,9 @@ export class BitrixService {
           select: ["ID", "NAME", "PHONE", "EMAIL", "ADDRESS", "WEB"]
         }
       });
-      return res.data.result;
+      return {
+        contacts: res.data.result
+      };
     } catch (error) {
       if (error?.response?.status !== HttpStatus.UNAUTHORIZED) return new HttpException(error?.response?.data?.error || "Something went wrong", error?.response?.status || 500);
       try {
@@ -101,7 +103,10 @@ export class BitrixService {
             select: ["ID", "NAME", "PHONE", "EMAIL", "ADDRESS", "WEB"]
           }
         });
-        return res.data.result;
+        return {
+          contacts: res.data.result,
+          accessToken: newAccessToken
+        };
       } catch (e) {
         return new BadRequestException(e?.message);
       }
@@ -121,7 +126,9 @@ export class BitrixService {
           WEB: [{ VALUE: body.website, VALUE_TYPE: "WORK" }]
         }
       });
-      return "Create contact successfully";
+      return {
+        message: "Create contact successfully"
+      };
     } catch (error) {
       if (error?.response?.status !== HttpStatus.UNAUTHORIZED) return new HttpException(error?.response?.data?.error || "Something went wrong", error?.response?.status || 500);
       try {
@@ -137,9 +144,11 @@ export class BitrixService {
             WEB: [{ VALUE: body.website, VALUE_TYPE: "WORK" }]
           }
         });
-        return "Create contact successfully";
+        return {
+          message: "Create contact successfully",
+          accessToken: newAccessToken
+        };
       } catch (e) {
-        return new BadRequestException(e?.message);
       }
     }
 
@@ -155,7 +164,9 @@ export class BitrixService {
           select: ["*"]
         }
       });
-      return res.data.result;
+      return {
+        requisites: res.data.result,
+      }
     } catch (error) {
       if (error?.response?.status !== HttpStatus.UNAUTHORIZED) return new HttpException(error?.response?.data?.error || "Something went wrong", error?.response?.status || 500);
       try {
@@ -167,7 +178,10 @@ export class BitrixService {
             select: ["*"]
           }
         });
-        return res.data.result;
+        return {
+          requisites: res.data.result,
+          accessToken: newAccessToken
+        }
       } catch (e) {
         return new BadRequestException(e?.message);
       }
@@ -275,6 +289,7 @@ export class BitrixService {
         });
 
         return {
+          accessToken: newAccessToken,
           requisiteId,
           bankDetailId: bankRes.data.result
         };
