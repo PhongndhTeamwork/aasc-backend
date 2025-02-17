@@ -22,6 +22,7 @@
     "reset": "ts-node -r tsconfig-paths/register src/database/data-resetting.prisma.ts"
   },
   "dependencies": {
+    "@bitrix24/b24jssdk": "^0.1.7",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.2.3",
     "@nestjs/core": "^10.0.0",
@@ -48,7 +49,7 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
-    "prisma": "^5.17.0",
+    "prisma": "^6.3.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "tsc-alias": "^1.8.10",

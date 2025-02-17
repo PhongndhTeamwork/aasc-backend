@@ -14,12 +14,13 @@ datasource db {
 }
 
 model User {
-  id           Int     @id @default(autoincrement())
-  type         String?
-  username     String
-  emal         String?
-  accessToken  String? @map("access_token")
-  refreshToken String? @map("refresh_token")
+  id           Int    @id @default(autoincrement())
+  memberId     String @map("member_id")
+  accessToken  String @map("access_token")
+  refreshToken String @map("refresh_token")
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
   @@map("users")
 }

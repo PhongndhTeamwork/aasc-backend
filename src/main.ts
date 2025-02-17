@@ -18,22 +18,12 @@ async function bootstrap() {
   SwaggerModule.setup("api/docs", app, document);
 
   app.enableCors({
-    origin: '*',
+    origin: ["https://aasc-frontend-ivory.vercel.app/", "http://localhost:7000"],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
   });
 
-  // app.use(session({
-  //   secret: "secretfdfdfdfdfdfdfdfgrthtrhgdsf",
-  //   saveUninitialized: false,
-  //   resave: false,
-  //   cookie: {
-  //     maxAge: 1000 * 60
-  //   }
-  // }));
-  // app.use(passport.initialize());
-  // app.use(passport.session());
 
   await app.listen(8000);
 }
