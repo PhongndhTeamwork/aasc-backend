@@ -14,7 +14,7 @@ export class BitrixController {
   }
 
 
-  @Post("install-app")
+  @Get("install-app")
   async installApp(
     @Body() body: AuthInfoDto,
     @Res() res: Response
